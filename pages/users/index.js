@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const index = ({ users }) => {
@@ -5,10 +6,21 @@ const index = ({ users }) => {
   // State to hold my data
   // userEffect, load data and set state
 
-  console.log(users);
+  // console.log(users);
   return (
     <div>
       <h2>Inside Users total User {users?.length}</h2>
+
+      {users.map((user) => (
+        <div key={user.id}>
+          <h4>
+            Name: {user.name}{' '}
+            <Link href={`/users/${user.id}`}>
+              <button>Explore</button>
+            </Link>
+          </h4>
+        </div>
+      ))}
     </div>
   );
 };
